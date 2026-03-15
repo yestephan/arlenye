@@ -10,8 +10,7 @@
     "start": "next start",
     "lint": "eslint",
     "sync-paintings": "node scripts/sync-paintings.mjs",
-    "import-paintings": "node scripts/import-paintings.mjs",
-    "import-paintings:apply": "node scripts/import-paintings.mjs --apply"
+    "edit-paintings": "node scripts/edit-paintings.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
@@ -32,11 +31,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "js-yaml": "^4.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

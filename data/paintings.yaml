@@ -1,0 +1,94 @@
+# Paintings metadata
+# Edit freely — run `pnpm sync-paintings` after saving to regenerate paintings.ts
+#
+# Fields:
+#   filename:   (required) matches the file in public/paintings/
+#   title:      (required) display title
+#   year:       (optional) e.g. 2023
+#   series:     (optional) groups paintings in the gallery filter
+#   dimensions: (optional) e.g. "30 × 40 cm"
+#   medium:     (optional) e.g. "Watercolour on paper"
+
+- filename: the-bund-shanghai.jpg
+  title: The Bund, Shanghai
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: clematis.jpg
+  title: Clematis
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: delft-square.jpg
+  title: Delft Market Square
+  year:
+  series: Dutch Townscapes
+  dimensions:
+  medium:
+
+- filename: german-trade-house.jpg
+  title: German Trade House
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: harbour-view-dordrecht.jpg
+  title: Harbour View, Dordrecht
+  year:
+  series: Dutch Townscapes
+  dimensions:
+  medium:
+
+- filename: havana-street.jpg
+  title: Havana Street
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: onsala-house.jpg
+  title: Onsala House
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: kungsbacka-creek.jpg
+  title: Kungsbacka Creek
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: lisbon-street.jpg
+  title: Lisbon Street
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: queretaro-noon.jpg
+  title: Noon in Querétaro
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: piazza-faro.jpg
+  title: Piazza in Faro, Portugal
+  year:
+  series:
+  dimensions:
+  medium:
+
+- filename: vragno-island.jpg
+  title: Vrångö Island, Sweden
+  year:
+  series:
+  dimensions:
+  medium:

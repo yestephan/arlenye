@@ -1,123 +1,130 @@
 #!/usr/bin/env node
 /**
- * Scans /public/paintings/ and syncs data/paintings.ts
+ * Reads data/paintings.yaml and generates data/paintings.ts
  *
- * - New image files get auto-added with a title derived from the filename
- * - Removed image files get pruned
- * - Manual edits to data/paintings-meta.json (title, year, order) are preserved
+ * - New image files found in public/paintings/ but missing from the YAML
+ *   are appended as stubs so you can fill in their metadata.
+ * - Entries for files that no longer exist in public/paintings/ are flagged.
  *
  * Usage:
- *   npm run sync-paintings
+ *   pnpm sync-paintings
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import crypto from "crypto";
+import yaml from "js-yaml";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const PAINTINGS_DIR = path.join(ROOT, "public", "paintings");
-const META_FILE = path.join(ROOT, "data", "paintings-meta.json");
+const YAML_FILE = path.join(ROOT, "data", "paintings.yaml");
 const OUTPUT_FILE = path.join(ROOT, "data", "paintings.ts");
 
-const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"]);
+const IMAGE_EXTS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 
-/** "vrangö-harbor_2023.jpg" → "Vrangö Harbor 2023" */
-function titleFromFilename(filename) {
-  const base = path.basename(filename, path.extname(filename));
-  return base
-    .replace(/[-_]/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-/** Stable short ID from filename */
 function idFromFilename(filename) {
   return crypto.createHash("md5").update(filename).digest("hex").slice(0, 8);
 }
 
-// --- Load existing meta ---
-let meta = {};
-if (fs.existsSync(META_FILE)) {
-  meta = JSON.parse(fs.readFileSync(META_FILE, "utf-8"));
+function titleFromFilename(filename) {
+  return path
+    .basename(filename, path.extname(filename))
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-// --- Scan paintings directory ---
+// --- Load YAML ---
+let entries = [];
+if (fs.existsSync(YAML_FILE)) {
+  entries = yaml.load(fs.readFileSync(YAML_FILE, "utf-8")) || [];
+}
+
+// --- Scan public/paintings ---
 if (!fs.existsSync(PAINTINGS_DIR)) {
   fs.mkdirSync(PAINTINGS_DIR, { recursive: true });
-  console.log("Created public/paintings/");
 }
 
 const imageFiles = fs
   .readdirSync(PAINTINGS_DIR)
-  .filter((f) => IMAGE_EXTENSIONS.has(path.extname(f).toLowerCase()))
+  .filter((f) => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
   .sort();
 
-if (imageFiles.length === 0) {
-  console.log("No images found in public/paintings/ — add some and re-run.");
-  process.exit(0);
+// Warn about YAML entries with no matching file
+const yamlFilenames = new Set(entries.map((e) => e.filename));
+for (const e of entries) {
+  if (!fs.existsSync(path.join(PAINTINGS_DIR, e.filename))) {
+    console.warn(`⚠  Not found in public/paintings/: ${e.filename}`);
+  }
 }
 
-// --- Merge: keep existing meta, add new files, prune missing ---
-const updatedMeta = {};
-
+// Append stubs for new files not yet in YAML
+let added = 0;
 for (const filename of imageFiles) {
-  if (meta[filename]) {
-    // Preserve existing entry
-    updatedMeta[filename] = meta[filename];
-  } else {
-    // New file — auto-generate
-    updatedMeta[filename] = {
-      id: idFromFilename(filename),
-      title: titleFromFilename(filename),
-      // year: 2024,  // uncomment and set if desired
-    };
-    console.log(`+ Added: ${filename} → "${updatedMeta[filename].title}"`);
+  if (!yamlFilenames.has(filename)) {
+    entries.push({ filename, title: titleFromFilename(filename) });
+    console.log(`+ New image detected — added stub: ${filename}`);
+    added++;
   }
 }
 
-// Report pruned files
-for (const filename of Object.keys(meta)) {
-  if (!updatedMeta[filename]) {
-    console.log(`- Removed: ${filename}`);
-  }
+// Write back YAML if new stubs were added
+if (added > 0) {
+  const header = `# Paintings metadata
+# Edit freely — run \`pnpm sync-paintings\` after saving to regenerate paintings.ts
+#
+# Fields:
+#   filename:   (required) matches the file in public/paintings/
+#   title:      (required) display title
+#   year:       (optional) e.g. 2023
+#   series:     (optional) groups paintings in the gallery filter
+#   dimensions: (optional) e.g. "30 × 40 cm"
+#   medium:     (optional) e.g. "Watercolour on paper"\n\n`;
+  fs.writeFileSync(YAML_FILE, header + yaml.dump(entries, { lineWidth: 120 }));
+  console.log(`Updated data/paintings.yaml with ${added} new stub(s).`);
 }
 
-// --- Write meta JSON (source of truth for edits) ---
-fs.writeFileSync(META_FILE, JSON.stringify(updatedMeta, null, 2) + "\n");
-
-// --- Write paintings.ts ---
-const entries = imageFiles.map((filename) => {
-  const m = updatedMeta[filename];
-  const extras = [
-    m.year ? `year: ${m.year}` : "",
-    m.dimensions ? `dimensions: "${m.dimensions}"` : "",
-    m.series ? `series: "${m.series}"` : "",
-  ].filter(Boolean).join(", ");
-  return `  { id: "${m.id}", title: "${m.title}", filename: "${filename}"${extras ? `, ${extras}` : ""} },`;
-});
+// --- Generate paintings.ts ---
+const tsEntries = entries
+  .filter((e) => fs.existsSync(path.join(PAINTINGS_DIR, e.filename)))
+  .map((e) => {
+    const id = e.id || idFromFilename(e.filename);
+    const fields = [
+      `id: "${id}"`,
+      `title: "${e.title}"`,
+      `filename: "${e.filename}"`,
+      e.year ? `year: ${e.year}` : null,
+      e.series ? `series: "${e.series}"` : null,
+      e.dimensions ? `dimensions: "${e.dimensions}"` : null,
+      e.medium ? `medium: "${e.medium}"` : null,
+    ]
+      .filter(Boolean)
+      .join(", ");
+    return `  { ${fields} },`;
+  });
 
 const output = `// AUTO-GENERATED by scripts/sync-paintings.mjs
-// Edit titles, years, dimensions, and series in data/paintings-meta.json, then re-run sync.
+// Edit data/paintings.yaml, then re-run: pnpm sync-paintings
 
 export interface Painting {
   id: string;
   title: string;
   filename: string;
   year?: number;
-  dimensions?: string;
   series?: string;
+  dimensions?: string;
+  medium?: string;
 }
 
 const paintings: Painting[] = [
-${entries.join("\n")}
+${tsEntries.join("\n")}
 ];
 
 export default paintings;
 `;
 
 fs.writeFileSync(OUTPUT_FILE, output);
-
-console.log(`\nDone — ${imageFiles.length} painting(s) synced.`);
-console.log(`Edit titles/series/dimensions in: data/paintings-meta.json`);
-console.log(`Then re-run:    pnpm sync-paintings`);
+console.log(`\nDone — ${tsEntries.length} painting(s) written to data/paintings.ts`);
+console.log(`Edit metadata in: data/paintings.yaml`);
+console.log(`Then re-run:      pnpm sync-paintings`);
