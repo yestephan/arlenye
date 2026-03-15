@@ -12,18 +12,19 @@ export interface Painting {
 }
 
 const paintings: Painting[] = [
-  { id: "e1bf9032", title: "The Bund, Shanghai", filename: "the-bund-shanghai.jpg" },
-  { id: "6ef479cb", title: "Clematis", filename: "clematis.jpg" },
-  { id: "a0cbc0de", title: "Delft Market Square", filename: "delft-square.jpg", series: "Dutch Townscapes" },
-  { id: "d48c4bf7", title: "German Trade House", filename: "german-trade-house.jpg" },
-  { id: "6e981b3f", title: "Harbour View, Dordrecht", filename: "harbour-view-dordrecht.jpg", series: "Dutch Townscapes" },
-  { id: "bdfba010", title: "Havana Street", filename: "havana-street.jpg" },
-  { id: "00bdc875", title: "Onsala House", filename: "onsala-house.jpg" },
-  { id: "751ed854", title: "Kungsbacka Creek", filename: "kungsbacka-creek.jpg" },
-  { id: "b08cdb50", title: "Lisbon Street", filename: "lisbon-street.jpg" },
-  { id: "20359412", title: "Noon in Querétaro", filename: "queretaro-noon.jpg" },
-  { id: "97553a47", title: "Piazza in Faro, Portugal", filename: "piazza-faro.jpg" },
-  { id: "b70f955f", title: "Vrångö Island, Sweden", filename: "vragno-island.jpg" },
+  { id: "e1bf9032", title: "The Bund, Shanghai", filename: "the-bund-shanghai.jpg", year: 1979, series: "China", medium: "Sketch" },
+  { id: "6ef479cb", title: "Clematis", filename: "clematis.jpg", year: 2025, series: "Flowers", medium: "Watercolour on paper" },
+  { id: "a0cbc0de", title: "Delft Market Square", filename: "delft-square.jpg", year: 2023, series: "Netherlands", medium: "Watercolour on paper" },
+  { id: "d48c4bf7", title: "German Trade House", filename: "german-trade-house.jpg", year: 1979, series: "China", medium: "Sketch" },
+  { id: "6e981b3f", title: "Harbour View, Dordrecht", filename: "harbour-view-dordrecht.jpg", year: 2025, series: "Netherlands", medium: "Watercolour on paper" },
+  { id: "bdfba010", title: "Havana Street", filename: "havana-street.jpg", year: 2019, series: "Cuba", medium: "Watercolour on paper" },
+  { id: "00bdc875", title: "Onsala House", filename: "onsala-house.jpg", year: 2018, series: "Sweden", medium: "Watercolour on paper" },
+  { id: "751ed854", title: "Kungsbacka Creek", filename: "kungsbacka-creek.jpg", year: 2018, series: "Sweden", medium: "Watercolour on paper" },
+  { id: "b08cdb50", title: "Lisbon Street", filename: "lisbon-street.jpg", year: 2019, series: "Portugal", medium: "Watercolour on paper" },
+  { id: "20359412", title: "Noon in Querétaro", filename: "queretaro-noon.jpg", year: 2019, series: "Mexico", medium: "Watercolour on paper" },
+  { id: "97553a47", title: "Piazza in Faro, Portugal", filename: "piazza-faro.jpg", year: 2019, series: "Portugal", medium: "Watercolour on paper" },
+  { id: "b70f955f", title: "Vrångö Island, Sweden", filename: "vragno-island.jpg", year: 2018, series: "Sweden", medium: "Watercolour on paper" },
+  { id: "8698802a", title: "Shanghai House", filename: "Shanghai_House.jpg", year: 1979, series: "China", medium: "Sketch" },
 ];
 
 export default paintings;

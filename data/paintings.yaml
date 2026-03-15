@@ -11,84 +11,66 @@
 
 - filename: the-bund-shanghai.jpg
   title: The Bund, Shanghai
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: China
+  year: 1979
+  medium: Sketch
 - filename: clematis.jpg
   title: Clematis
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Flowers
+  year: 2025
+  medium: Watercolour on paper
 - filename: delft-square.jpg
   title: Delft Market Square
-  year:
-  series: Dutch Townscapes
-  dimensions:
-  medium:
-
+  series: Netherlands
+  year: 2023
+  medium: Watercolour on paper
 - filename: german-trade-house.jpg
   title: German Trade House
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: China
+  year: 1979
+  medium: Sketch
 - filename: harbour-view-dordrecht.jpg
   title: Harbour View, Dordrecht
-  year:
-  series: Dutch Townscapes
-  dimensions:
-  medium:
-
+  series: Netherlands
+  year: 2025
+  medium: Watercolour on paper
 - filename: havana-street.jpg
   title: Havana Street
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Cuba
+  year: 2019
+  medium: Watercolour on paper
 - filename: onsala-house.jpg
   title: Onsala House
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Sweden
+  year: 2018
+  medium: Watercolour on paper
 - filename: kungsbacka-creek.jpg
   title: Kungsbacka Creek
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Sweden
+  year: 2018
+  medium: Watercolour on paper
 - filename: lisbon-street.jpg
   title: Lisbon Street
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Portugal
+  year: 2019
+  medium: Watercolour on paper
 - filename: queretaro-noon.jpg
   title: Noon in Querétaro
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Mexico
+  year: 2019
+  medium: Watercolour on paper
 - filename: piazza-faro.jpg
   title: Piazza in Faro, Portugal
-  year:
-  series:
-  dimensions:
-  medium:
-
+  series: Portugal
+  year: 2019
+  medium: Watercolour on paper
 - filename: vragno-island.jpg
   title: Vrångö Island, Sweden
-  year:
-  series:
-  dimensions:
-  medium:
+  series: Sweden
+  year: 2018
+  medium: Watercolour on paper
+- filename: Shanghai_House.jpg
+  title: Shanghai House
+  medium: Sketch
+  year: 1979
+  series: China
