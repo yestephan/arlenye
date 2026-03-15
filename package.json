@@ -2,19 +2,25 @@
   "name": "arlenye",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.26.1",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync-paintings": "node scripts/sync-paintings.mjs"
+    "sync-paintings": "node scripts/sync-paintings.mjs",
+    "import-paintings": "node scripts/import-paintings.mjs",
+    "import-paintings:apply": "node scripts/import-paintings.mjs --apply"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "next-themes": "^0.4.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.2",

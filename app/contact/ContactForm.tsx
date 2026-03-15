@@ -40,40 +40,40 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-black transition-colors bg-gray-50";
+    "w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40";
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="flex gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="flex gap-6">
         <div className="flex-1">
-          <label className="block text-xs text-gray-500 mb-1">
-            First Name <span className="text-gray-400">(required)</span>
+          <label className="block text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
+            First Name
           </label>
           <input
             {...register("firstName", { required: true })}
             className={inputClass}
           />
           {errors.firstName && (
-            <p className="text-xs text-red-500 mt-1">Required</p>
+            <p className="text-[10px] text-destructive mt-1 tracking-wide">Required</p>
           )}
         </div>
         <div className="flex-1">
-          <label className="block text-xs text-gray-500 mb-1">
-            Last Name <span className="text-gray-400">(required)</span>
+          <label className="block text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
+            Last Name
           </label>
           <input
             {...register("lastName", { required: true })}
             className={inputClass}
           />
           {errors.lastName && (
-            <p className="text-xs text-red-500 mt-1">Required</p>
+            <p className="text-[10px] text-destructive mt-1 tracking-wide">Required</p>
           )}
         </div>
       </div>
 
       <div>
-        <label className="block text-xs text-gray-500 mb-1">
-          Email Address <span className="text-gray-400">(required)</span>
+        <label className="block text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
+          Email Address
         </label>
         <input
           type="email"
@@ -81,26 +81,26 @@ export default function ContactForm() {
           className={inputClass}
         />
         {errors.email && (
-          <p className="text-xs text-red-500 mt-1">Required</p>
+          <p className="text-[10px] text-destructive mt-1 tracking-wide">Required</p>
         )}
       </div>
 
       <div>
-        <label className="block text-xs text-gray-500 mb-1">
-          Subject <span className="text-gray-400">(required)</span>
+        <label className="block text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
+          Subject
         </label>
         <input
           {...register("subject", { required: true })}
           className={inputClass}
         />
         {errors.subject && (
-          <p className="text-xs text-red-500 mt-1">Required</p>
+          <p className="text-[10px] text-destructive mt-1 tracking-wide">Required</p>
         )}
       </div>
 
       <div>
-        <label className="block text-xs text-gray-500 mb-1">
-          Message <span className="text-gray-400">(required)</span>
+        <label className="block text-[10px] uppercase tracking-widest text-muted-foreground mb-2">
+          Message
         </label>
         <textarea
           rows={5}
@@ -108,23 +108,23 @@ export default function ContactForm() {
           className={inputClass}
         />
         {errors.message && (
-          <p className="text-xs text-red-500 mt-1">Required</p>
+          <p className="text-[10px] text-destructive mt-1 tracking-wide">Required</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="bg-black text-white text-xs tracking-widest uppercase px-6 py-3 hover:bg-gray-800 transition-colors disabled:opacity-50"
+        className="text-xs uppercase tracking-widest border border-foreground px-6 py-2.5 hover:bg-foreground hover:text-background transition-colors disabled:opacity-40"
       >
-        {status === "sending" ? "Sending…" : "Submit"}
+        {status === "sending" ? "Sending…" : "Send Message"}
       </button>
 
       {status === "sent" && (
-        <p className="text-sm text-green-700">Message sent. Thank you!</p>
+        <p className="text-xs text-muted-foreground tracking-wide">Message sent. Thank you.</p>
       )}
       {status === "error" && (
-        <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+        <p className="text-xs text-destructive tracking-wide">Something went wrong. Please try again.</p>
       )}
     </form>
   );

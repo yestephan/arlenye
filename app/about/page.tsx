@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="max-w-2xl mx-auto px-4">
       {/* Artist photo — replace with actual image */}
-      <div className="w-full aspect-[4/3] relative mb-10 bg-gray-100">
+      <div className="w-full aspect-[4/3] relative mb-10 bg-muted">
         {/* Uncomment once you have a photo:
         <Image
           src="/artist.jpg"
@@ -15,8 +15,7 @@ export default function About() {
         */}
       </div>
 
-      <h2 className="text-2xl font-semibold mb-4">Bio</h2>
-      <p className="text-gray-700 leading-relaxed">
+      <p className="text-muted-foreground leading-relaxed">
         Arlen Ye was born in Shanghai and studied architecture in both China and
         Sweden. After retiring from his teaching post at the Faculty of
         Architecture at the University of Hong Kong, he turned his focus to his

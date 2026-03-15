@@ -1,10 +1,224 @@
 {
-  "lisbon-tram.jpg": {
-    "id": "1531a31f",
-    "title": "Lisbon Tram"
+  "20231007-170233.jpg": {
+    "id": "2403d79b",
+    "title": "20231007 170233"
   },
-  "vrangö-harbor.jpg": {
-    "id": "1067d297",
-    "title": "Vrangö Harbor"
+  "20231007-170347.jpg": {
+    "id": "f0b00329",
+    "title": "20231007 170347"
+  },
+  "20231007-171004.jpg": {
+    "id": "a0ae384b",
+    "title": "20231007 171004"
+  },
+  "20231007-171220.jpg": {
+    "id": "8f1a76d8",
+    "title": "20231007 171220"
+  },
+  "20250403-155920.jpg": {
+    "id": "ef6b6de2",
+    "title": "20250403 155920"
+  },
+  "20250403-155956.jpg": {
+    "id": "fe49cb04",
+    "title": "20250403 155956"
+  },
+  "20250403-162251.jpg": {
+    "id": "44e0c78e",
+    "title": "20250403 162251"
+  },
+  "behind-the-sint-janskerk-gouda.jpg": {
+    "id": "38823844",
+    "title": "Behind The Sint Janskerk, Gouda",
+    "series": "Netherlands"
+  },
+  "cavacos-portugal.jpg": {
+    "id": "183832dd",
+    "title": "Cavacos, Portugal",
+    "series": "Portugal"
+  },
+  "clematis-1.jpg": {
+    "id": "e85cf3b6",
+    "title": "Clematis I",
+    "series": "Flowers"
+  },
+  "clematis-2.jpg": {
+    "id": "428aede7",
+    "title": "Clematis II",
+    "series": "Flowers"
+  },
+  "clematis-3.jpg": {
+    "id": "c87f5189",
+    "title": "Clematis III",
+    "series": "Flowers"
+  },
+  "clematis-4.jpg": {
+    "id": "33f0f0a2",
+    "title": "Clematis IV",
+    "series": "Flowers"
+  },
+  "delft-bridges-1.jpg": {
+    "id": "79bce3db",
+    "title": "Delft Bridges I",
+    "series": "Netherlands"
+  },
+  "delft-bridges-2.jpg": {
+    "id": "cf3f99ea",
+    "title": "Delft Bridges II",
+    "series": "Netherlands"
+  },
+  "delft-bridges-3.jpg": {
+    "id": "9d35cd82",
+    "title": "Delft Bridges III",
+    "series": "Netherlands"
+  },
+  "delft-bridges-4.jpg": {
+    "id": "69c583ad",
+    "title": "Delft Bridges IV",
+    "series": "Netherlands"
+  },
+  "delft-square.jpg": {
+    "id": "a0cbc0de",
+    "title": "Delft Square",
+    "series": "Netherlands"
+  },
+  "field-in-the-rain.jpg": {
+    "id": "2c957fb9",
+    "title": "Field in the Rain",
+    "series": "Landscape"
+  },
+  "gottskar-marina.jpg": {
+    "id": "13bd1c4c",
+    "title": "Gottskär Marina",
+    "series": "Sweden"
+  },
+  "harbour-view-1.jpg": {
+    "id": "33f231d6",
+    "title": "Harbour View I"
+  },
+  "harbour-view-2.jpg": {
+    "id": "40ae4664",
+    "title": "Harbour View II"
+  },
+  "havana-street-01.jpg": {
+    "id": "b698b9aa",
+    "title": "Havana Street",
+    "series": "Cuba"
+  },
+  "hillside-spring.jpg": {
+    "id": "3ceb2f56",
+    "title": "Hillside Spring",
+    "series": "Landscape"
+  },
+  "hillside-winter.jpg": {
+    "id": "c8d6594b",
+    "title": "Hillside Winter",
+    "series": "Landscape"
+  },
+  "kungsbacka-creek-01.jpg": {
+    "id": "7372f10f",
+    "title": "Kungsbacka Creek I",
+    "series": "Sweden"
+  },
+  "kungsbacka-creek-02.jpg": {
+    "id": "d871c5d8",
+    "title": "Kungsbacka Creek II",
+    "series": "Sweden"
+  },
+  "kungsbacka-creek-sweden.jpg": {
+    "id": "48fa6ff3",
+    "title": "Kungsbacka Creek",
+    "series": "Sweden"
+  },
+  "kungsbackan-sketch.jpg": {
+    "id": "356e70bb",
+    "title": "Kungsbackan Sketch",
+    "series": "Sweden"
+  },
+  "kungsbackan.jpg": {
+    "id": "88058acd",
+    "title": "Kungsbackan",
+    "series": "Sweden"
+  },
+  "lisboa-01.jpg": {
+    "id": "90bb1219",
+    "title": "Lisboa I",
+    "series": "Portugal"
+  },
+  "lisboa-02.jpg": {
+    "id": "4586396a",
+    "title": "Lisboa II",
+    "series": "Portugal"
+  },
+  "misty-woods.jpg": {
+    "id": "83041895",
+    "title": "Misty Woods",
+    "series": "Landscape"
+  },
+  "noon-time-in-qeretaro-mexico.jpg": {
+    "id": "a3be361c",
+    "title": "Noon Time in Querétaro",
+    "series": "Mexico"
+  },
+  "old-harbour-1.jpg": {
+    "id": "d31cc505",
+    "title": "Old Harbour I"
+  },
+  "old-harbour-2.jpg": {
+    "id": "f986d53e",
+    "title": "Old Harbour II"
+  },
+  "old-harbour-3.jpg": {
+    "id": "4fa839fe",
+    "title": "Old Harbour III"
+  },
+  "onsala-fjorden.jpg": {
+    "id": "8694d3b0",
+    "title": "Onsala Fjorden",
+    "series": "Sweden"
+  },
+  "onsala-marina-01.jpg": {
+    "id": "f359ad07",
+    "title": "Onsala Marina",
+    "series": "Sweden"
+  },
+  "piazza-in-faro-portugal.jpg": {
+    "id": "183da572",
+    "title": "Piazza in Faro",
+    "series": "Portugal"
+  },
+  "queretaro-noon-01.jpg": {
+    "id": "e127e0b7",
+    "title": "Querétaro Noon",
+    "series": "Mexico"
+  },
+  "sketchs-1.jpg": {
+    "id": "0dcca1ab",
+    "title": "Sketches"
+  },
+  "village-view.jpg": {
+    "id": "7b850b27",
+    "title": "Village View",
+    "series": "Landscape"
+  },
+  "vragno-island-sweden.jpg": {
+    "id": "e9949d62",
+    "title": "Vrångö Island",
+    "series": "Sweden"
+  },
+  "vrango-island-sweden-2019.jpg": {
+    "id": "a81ee763",
+    "title": "Vrångö Island, 2019",
+    "series": "Sweden"
+  },
+  "winter-field.jpg": {
+    "id": "2fd6308d",
+    "title": "Winter Field",
+    "series": "Landscape"
+  },
+  "woods.jpg": {
+    "id": "678cbb0f",
+    "title": "Woods",
+    "series": "Landscape"
   }
 }
