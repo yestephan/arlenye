@@ -12,7 +12,7 @@ interface FormData {
 }
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error" | "rate-limited">("idle");
   const {
     register,
     handleSubmit,
@@ -31,6 +31,8 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus("sent");
         reset();
+      } else if (res.status === 429) {
+        setStatus("rate-limited");
       } else {
         setStatus("error");
       }
@@ -125,6 +127,9 @@ export default function ContactForm() {
       )}
       {status === "error" && (
         <p className="text-xs text-destructive tracking-wide">Something went wrong. Please try again.</p>
+      )}
+      {status === "rate-limited" && (
+        <p className="text-xs text-destructive tracking-wide">Too many messages. Please try again later.</p>
       )}
     </form>
   );
