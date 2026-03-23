@@ -3,16 +3,14 @@ import Image from "next/image";
 export default function About() {
   return (
     <div className="max-w-2xl mx-auto px-4">
-      {/* Artist photo — replace with actual image */}
+      {/* The Bund, Shanghai — 1979 sketch */}
       <div className="w-full aspect-[4/3] relative mb-10 bg-muted">
-        {/* Uncomment once you have a photo:
         <Image
-          src="/artist.jpg"
-          alt="Arlen Ye"
+          src="/paintings/the-bund-shanghai.jpg"
+          alt="The Bund, Shanghai — sketch by Arlen Ye"
           fill
           className="object-cover"
         />
-        */}
       </div>
 
       <p className="text-muted-foreground leading-relaxed">
