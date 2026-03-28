@@ -25,9 +25,9 @@ Personal portfolio website for **Arlen Ye**, a watercolour painter. The site sho
 Paintings are managed through a two-step workflow:
 
 1. Drop image files into `/public/paintings/`
-2. Run `pnpm sync-paintings` — auto-generates `data/paintings.ts` from `data/paintings-meta.json`
+2. Run `pnpm sync-paintings` — auto-generates `data/paintings.ts` from `data/paintings.yaml`
 
-To edit a title or add a year, edit `data/paintings-meta.json` and re-run the sync script. Never edit `data/paintings.ts` directly — it is auto-generated.
+To edit a title or add a year, edit `data/paintings.yaml` and re-run the sync script. Never edit `data/paintings.ts` directly — it is auto-generated.
 
 The `Painting` type lives in `data/paintings.ts`:
 ```ts
