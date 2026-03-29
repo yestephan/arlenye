@@ -9,30 +9,7 @@ const schema = z.object({
   message: z.string().min(1).max(5000),
 });
 
-async function getRatelimit() {
-  const { Ratelimit } = await import("@upstash/ratelimit");
-  const { Redis } = await import("@upstash/redis");
-  return new Ratelimit({
-    redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(5, "1 h"),
-  });
-}
-
 export async function POST(request: Request) {
-  // Rate limiting (only when Upstash env vars are set)
-  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "anonymous";
-    const ratelimit = await getRatelimit();
-    const { success } = await ratelimit.limit(ip);
-    if (!success) {
-      return NextResponse.json(
-        { error: "Too many requests. Please try again later." },
-        { status: 429 }
-      );
-    }
-  }
-
   // Parse + validate body
   let body: unknown;
   try {
@@ -48,23 +25,25 @@ export async function POST(request: Request) {
 
   const { firstName, lastName, email, subject, message } = result.data;
 
-  if (process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL) {
+  if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD && process.env.CONTACT_EMAIL) {
     try {
-      const { Resend } = await import("resend");
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const { error } = await resend.emails.send({
-        from: "contact@arlenye.com",
+      const nodemailer = await import("nodemailer");
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_APP_PASSWORD,
+        },
+      });
+      await transporter.sendMail({
+        from: process.env.GMAIL_USER,
         to: process.env.CONTACT_EMAIL,
         replyTo: email,
         subject: `[arlenye.com] ${subject}`,
         text: `From: ${firstName} ${lastName} <${email}>\n\n${message}`,
       });
-      if (error) {
-        console.error("Resend error:", error);
-        return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
-      }
     } catch (err) {
-      console.error("Resend exception:", err);
+      console.error("Mail error:", err);
       return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
     }
   } else {
